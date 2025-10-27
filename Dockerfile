@@ -1,5 +1,5 @@
 # ===== Stage 1: Build the application with Maven =====
-FROM maven:3.9.6-eclipse-temurin-20-jdk AS build
+FROM maven:3.9.6-eclipse-temurin-21-jdk AS build
 
 # Set working directory
 WORKDIR /app
@@ -18,7 +18,7 @@ RUN mvn clean package -DskipTests
 
 
 # ===== Stage 2: Run the application with OpenTelemetry =====
-FROM eclipse-temurin:20-jdk
+FROM eclipse-temurin:21-jdk
 
 # Set working directory
 WORKDIR /app
