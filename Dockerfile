@@ -1,5 +1,5 @@
 # ===== Stage 1: Build the application with Maven =====
-FROM maven:3.9.6-eclipse-temurin-20-jdk AS build
+FROM maven:3.9.6-eclipse-temurin-20-jdk
 
 WORKDIR /app
 
