@@ -14,7 +14,7 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:20-jdk
 
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+COPY /app/target/*.jar app.jar
 
 ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar /app/opentelemetry-javaagent.jar
 
