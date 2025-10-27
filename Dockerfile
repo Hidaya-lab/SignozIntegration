@@ -1,5 +1,5 @@
 # ===== Stage 1: Build the application with Maven =====
-FROM maven:3.9.6-eclipse-temurin-20-jdk
+FROM maven:3.9.6-eclipse-temurin-20-jdk As build
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:20-jdk
 
 WORKDIR /app
-COPY target/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar /app/opentelemetry-javaagent.jar
 
